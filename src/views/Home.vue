@@ -1,7 +1,8 @@
 <template>
-  <main class="home">
+  <Loader v-if="isLoading" />
+  <main v-else class="home">
     <h1>Browse Football Club by Areas</h1>
-    <div  class="content">
+    <div class="content">
       <Table v-if="areas" :data="areas" :column="column" />
       <div v-else>No Data</div>
     </div>
@@ -12,10 +13,11 @@
 import { ref } from '@vue/reactivity'
 import axios from 'axios'
 import Table from '@/components/Table.vue'
+import Loader from '@/components/Loader.vue'
 
 export default {
   name: 'Home',
-  components: { Table },
+  components: { Table, Loader },
   data () {
     return {
       column: [
@@ -35,6 +37,7 @@ export default {
     }
   },
   setup () {
+    const isLoading = ref(true)
     const areas = ref(null)
     const totalAreas = ref(null)
     const parentArea = ref(null)
@@ -46,6 +49,7 @@ export default {
         })
         areas.value = data.areas
         totalAreas.value = data.count
+        isLoading.value = false
       } catch (err) {
         console.log(err)
       }
@@ -53,7 +57,7 @@ export default {
 
     getAreas()
 
-    return { areas, totalAreas, parentArea }
+    return { areas, totalAreas, parentArea, isLoading }
   }
 }
 </script>
