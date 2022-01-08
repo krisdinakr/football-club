@@ -17,10 +17,13 @@ export default {
 </script>
 
 <style>
-body {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
   font-size: 1rem;
 }
 
