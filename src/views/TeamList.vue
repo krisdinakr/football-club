@@ -7,16 +7,7 @@
         <h4>Total : {{ count }} teams</h4>
       </div>
       <div class="container">
-        <div v-for="team in teamList" :key="team.id" class="card">
-            <figure>
-              <img v-if="team.crestUrl" :src="team.crestUrl" :alt="team.shortName" class="card-img">
-              <img v-else src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png" alt="No Image" class="card-img">
-            </figure>
-          <div class="card-body">
-            <h5 class="card-title">{{ team.name }}</h5>
-            <router-link :to="{ name: 'Profile', params: { id: team.id }}" class="card-btn">Details</router-link>
-          </div>
-        </div>
+        <Card v-for="team in teamList" :key="team.id" :title="team.name" :link="{ name: 'Profile', params: { id: team.id }}" :alt="team.shortName" :img="team.crestUrl" />
       </div>
     </div>
     <div v-else>No data team in this area</div>
@@ -27,10 +18,11 @@
 import { ref } from '@vue/reactivity'
 import axios from 'axios'
 import Loader from '@/components/Loader.vue'
+import Card from '@/components/Card.vue'
 
 export default {
   props: ['id'],
-  components: { Loader },
+  components: { Loader, Card },
   setup (props) {
     const count = ref(null)
     const teamList = ref(null)
@@ -68,53 +60,5 @@ export default {
   gap: 1.25rem;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-.card {
-  width: 15rem;
-  background: #e2d1bd;
-  border-radius: 1rem;
-}
-
-figure {
-  height: 9rem;
-  margin: 1rem 0.75rem 0 0.75rem;
-}
-
-.card-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-  -o-object-fit: contain;
-}
-
-.card-body {
-  padding: 1rem;
-  margin-bottom: 1rem;
-}
-
-.card-title {
-  margin: 0;
-  font-size: 1.2rem;
-  letter-spacing: 0.5px;
-  margin-bottom: 0.5rem;
-}
-
-.card-btn {
-  text-decoration: none;
-  padding: 0.25rem 0.75rem;
-  background: #cd5b3c;
-  border: none;
-  cursor: pointer;
-  border-radius: 15px;
-  color: white;
-  font-weight: 550;
-  font-size: 0.8rem;
-  letter-spacing: 0.8px;
-}
-
-.card-btn:hover {
-  background: #678478;
 }
 </style>
