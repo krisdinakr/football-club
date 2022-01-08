@@ -12,6 +12,18 @@ const routes = [
     name: 'TeamList',
     component: () => import('../views/TeamList.vue'),
     props: true
+  },
+  {
+    path: '/teams/profile/:id',
+    name: 'Profile',
+    component: () => import('../views/Profile.vue'),
+    props: true
+  },
+  {
+    path: '/players/:id',
+    name: 'Player',
+    component: () => import('../views/Player.vue'),
+    props: true
   }
 ]
 
