@@ -1,34 +1,40 @@
 <template>
-  <div v-if="count" class="team-list">
-    <div class="info">
-      <h1>Team of {{ teamList[0].area.name }}</h1>
-      <h4>Total : {{ count }} teams</h4>
-    </div>
-    <div class="container">
-      <div v-for="team in teamList" :key="team.id" class="card">
-          <figure>
-            <img v-if="team.crestUrl" :src="team.crestUrl" :alt="team.shortName" class="card-img">
-            <img v-else src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png" alt="No Image" class="card-img">
-          </figure>
-        <div class="card-body">
-          <h5 class="card-title">{{ team.name }}</h5>
-          <router-link :to="{ name: 'Profile', params: { id: team.id }}" class="card-btn">Details</router-link>
+  <Loader v-if="isLoading" />
+  <div v-else>
+    <div v-if="count" class="team-list">
+      <div class="info">
+        <h1>Team of {{ teamList[0].area.name }}</h1>
+        <h4>Total : {{ count }} teams</h4>
+      </div>
+      <div class="container">
+        <div v-for="team in teamList" :key="team.id" class="card">
+            <figure>
+              <img v-if="team.crestUrl" :src="team.crestUrl" :alt="team.shortName" class="card-img">
+              <img v-else src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png" alt="No Image" class="card-img">
+            </figure>
+          <div class="card-body">
+            <h5 class="card-title">{{ team.name }}</h5>
+            <router-link :to="{ name: 'Profile', params: { id: team.id }}" class="card-btn">Details</router-link>
+          </div>
         </div>
       </div>
     </div>
+    <div v-else>No data team in this area</div>
   </div>
-  <div v-else>No data team in this area</div>
 </template>
 
 <script>
 import { ref } from '@vue/reactivity'
 import axios from 'axios'
+import Loader from '@/components/Loader.vue'
 
 export default {
   props: ['id'],
+  components: { Loader },
   setup (props) {
     const count = ref(null)
     const teamList = ref(null)
+    const isLoading = ref(true)
 
     const getTeamList = async () => {
       try {
@@ -38,6 +44,7 @@ export default {
         console.log(data)
         teamList.value = data.teams
         count.value = data.count
+        isLoading.value = false
       } catch (err) {
         console.log(err)
       }
@@ -45,7 +52,7 @@ export default {
 
     getTeamList()
 
-    return { teamList, count }
+    return { teamList, count, isLoading }
   }
 }
 </script>

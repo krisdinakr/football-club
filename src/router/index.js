@@ -6,6 +6,12 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/teams/:id',
+    name: 'TeamList',
+    component: () => import('../views/TeamList.vue'),
+    props: true
   }
 ]
 
