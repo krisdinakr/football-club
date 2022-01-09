@@ -1,9 +1,9 @@
 <template>
   <div class="home">
     <Loader v-if="isLoading" />
-    <main v-else>
-      <div>
-        <h1>Browse Football Club by Areas</h1>
+    <main class="home-content" v-else>
+      <h1>Browse Football Club by Areas</h1>
+      <div class="home-filter">
         <select @change="handleSelect" v-model="selectedArea" name="area">
           <option disabled value="">Select by Parent Area</option>
           <option :value="2014">Asia</option>
@@ -14,8 +14,15 @@
           <option :value="2159">N/C America</option>
           <option :value="2220">South America</option>
         </select>
+        <div>
+          <button @click="prevPage" :disabled="currentPage === 1" class="home-btn btn-prev">Prev Page</button>
+          <span class="home-pages">
+            {{ currentPage }} of {{ pageSize }}
+          </span>
+          <button @click="nextPage" :disabled="currentPage * dataPerPage + 1 > totalAreas" class="home-btn btn-next">Next Page</button>
+        </div>
       </div>
-      <Table v-if="areas" :data="areas" :column="column" />
+      <Table v-if="areas" :data="areasDataToShow" :column="column" />
       <div v-else>No Data</div>
     </main>
   </div>
@@ -26,6 +33,7 @@ import { ref } from '@vue/reactivity'
 import axios from 'axios'
 import Table from '@/components/Table.vue'
 import Loader from '@/components/Loader.vue'
+import { onUpdated } from '@vue/runtime-core'
 
 export default {
   name: 'Home',
@@ -33,6 +41,10 @@ export default {
   data () {
     return {
       column: [
+        {
+          key: 'id',
+          name: 'id'
+        },
         {
           key: 'name',
           name: 'area'
@@ -57,17 +69,35 @@ export default {
           headers: { 'X-Auth-Token': process.env.VUE_APP_API_TOKEN }
         })
         this.areas = data.childAreas
+        this.totalAreas = data.childAreas.length
+        this.areasDataToShow = this.filterData(0, this.dataPerPage)
+        this.currentPage = 1
       } catch (err) {
         console.log(err)
       }
       this.isLoading = false
+    },
+    nextPage () {
+      this.currentPage += 1
+      const start = (this.currentPage - 1) * this.dataPerPage
+      const updatedData = this.filterData(start, start + this.dataPerPage)
+      this.areasDataToShow = updatedData
+    },
+    prevPage () {
+      this.currentPage -= 1
+      const start = (this.currentPage - 1) * this.dataPerPage
+      const updatedData = this.filterData(start, start + this.dataPerPage)
+      this.areasDataToShow = updatedData
     }
   },
   setup () {
     const isLoading = ref(true)
     const areas = ref(null)
     const totalAreas = ref(null)
-    const parentArea = ref(null)
+    const areasDataToShow = ref(null)
+    const currentPage = ref(1)
+    const dataPerPage = ref(15)
+    const pageSize = ref(null)
 
     const getAreas = async () => {
       try {
@@ -76,8 +106,7 @@ export default {
         })
         areas.value = data.areas
         totalAreas.value = data.count
-        const parentAreaArray = areas.value.filter(area => area.parentArea !== null).map(el => el.parentArea)
-        parentArea.value = Array.from(new Set(parentAreaArray))
+        areasDataToShow.value = filterData(0, dataPerPage.value)
       } catch (err) {
         console.log(err)
       }
@@ -86,7 +115,15 @@ export default {
 
     getAreas()
 
-    return { areas, totalAreas, parentArea, isLoading }
+    const filterData = (start, end) => {
+      return areas.value.slice(start, end)
+    }
+
+    onUpdated(() => {
+      pageSize.value = Math.ceil(totalAreas.value / dataPerPage.value)
+    })
+
+    return { areas, totalAreas, isLoading, areasDataToShow, filterData, currentPage, dataPerPage, pageSize }
   }
 }
 </script>
@@ -104,14 +141,42 @@ export default {
 
 .home select {
   padding: 0.25rem;
-  margin-bottom: 1rem;
   font-size: 1rem;
   border-radius: 5px;
 }
 
+.home-filter {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.home-btn,
+.home-pages {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+  width: 5rem;
+}
+
+.home-btn {
+  background: transparent;
+  border: 1.5px solid #cd5b3c;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+.home-btn:nth-child(1) {
+   border-radius: 5px 0 0 5px;
+}
+
+.home-pages {
+  border-top: 1.5px solid #cd5b3c;
+  border-bottom: 1.5px solid #cd5b3c;
+}
+
 @media screen and (max-width: 600px) {
   #app .container {
-    width: 100%;
+    max-width: 100%;
     margin: 0;
   }
 
@@ -123,6 +188,12 @@ export default {
 
   .home main {
     width: 100%;
+  }
+
+  .home-filter{
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: center;
   }
 }
 </style>
