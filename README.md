@@ -1,5 +1,5 @@
 # Football-Club  
-Football Club merupakan sebuah website sederhana yang memberikan informasi tentang club sepak bola. Informasi yang ditampilkan mulai dari cakupan area, informasi club di spesifik area, profile club, dan profile pemain. Data didapatkan dari [football-data.org](https://www.football-data.org)
+Football Club merupakan sebuah website sederhana yang memberikan informasi tentang club sepak bola. Informasi yang ditampilkan mulai dari cakupan area, informasi club di spesifik area, profile club, dan profile pemain. Data didapatkan dari [football-data.org](https://www.football-data.org). 
 
 ## Tech & Dependencies  
 - VueJS
@@ -8,7 +8,15 @@ Football Club merupakan sebuah website sederhana yang memberikan informasi tenta
 - HTML
 - CSS
 
+## Link
+Live site URL : [football-club](https://demo-football-club.vercel.app/)
+
 ## Project setup
+### Get Token API
+- Signup to [football-data.org](https://www.football-data.org/client/register)
+- Create .env file and add your token API
+
+### Install Dependencies and Dev Dependencies
 ```
 yarn install
 ```
