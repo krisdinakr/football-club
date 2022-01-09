@@ -1,15 +1,14 @@
 <template>
-  <table id="table">
+  <div class="table-wrapper">
+    <table id="table">
     <thead>
       <tr>
-        <th>No</th>
         <th v-for="col in column" :key="col.key">{{ col.name }}</th>
         <th>Action</th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(item, index) in data" :key="item.id">
-        <td>{{ index + 1 }}</td>
+      <tr v-for="(item) in data" :key="item.id">
         <td v-for="col in column" :key="col.key">{{ item[col.key] }}</td>
         <td>
           <router-link :to="{ name: 'TeamList', params: { id: item.id }}">
@@ -19,6 +18,7 @@
       </tr>
     </tbody>
   </table>
+  </div>
 </template>
 
 <script>
@@ -33,7 +33,6 @@ export default {
   margin: 0 auto;
   border-collapse: collapse;
   box-shadow: rgba(0, 0, 0, 0.15) 0 0 20px;
-  overflow-x: auto;
 }
 
 #table thead th {
@@ -99,11 +98,7 @@ export default {
   background: #678478;
 }
 
-@media only screen and (max-width: 760px),
-(min-device-width: 768px) and (max-device-width: 1024px) {
-  #table {
-    width: 100%;
-  }
+.table-wrapper {
+  overflow-x: auto;
 }
-
 </style>
