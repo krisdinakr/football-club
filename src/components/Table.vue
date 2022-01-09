@@ -13,7 +13,7 @@
         <td v-for="col in column" :key="col.key">{{ item[col.key] }}</td>
         <td>
           <router-link :to="{ name: 'TeamList', params: { id: item.id }}">
-            <button class="table-button">More info</button>
+            <button class="table-button"><small>More info</small></button>
           </router-link>
         </td>
       </tr>
@@ -42,17 +42,41 @@ export default {
   text-transform: capitalize;
 }
 
+#table thead th:nth-child(1) {
+  width: 10%;
+}
+
+#table thead th:nth-child(2) {
+  width: 35%;
+}
+
+#table thead th:nth-child(3) {
+  width: 15%;
+}
+
+#table thead th:nth-child(4) {
+  width: 22%;
+}
+
+#table thead th:nth-child(5) {
+  width: 18%;
+}
+
 #table td,
 #table th {
   border: 1px solid #f7faf9;
+  white-space: nowrap;
+}
+
+#table td {
   padding: 0.5rem;
 }
 
-#table tbody td:nth-of-type(odd) {
+#table tbody td {
   text-align: center;
 }
 
-#table tbody td:nth-child(even) {
+#table tbody td:nth-child(2) {
   text-align: left;
 }
 
@@ -61,7 +85,7 @@ export default {
 }
 
 .table-button {
-  padding: 0.5rem 0.75rem;
+  padding: 0.25rem 0.5rem;
   background: #cd5b3c;
   border: none;
   cursor: pointer;

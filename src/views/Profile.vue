@@ -114,6 +114,7 @@ export default {
 
 .profile-img {
   max-width: 20rem;
+  filter: brightness(0.5);
 }
 
 .profile-player {
