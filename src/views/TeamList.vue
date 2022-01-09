@@ -1,16 +1,19 @@
 <template>
-  <Loader v-if="isLoading" />
-  <div v-else>
-    <div v-if="count" class="team-list">
-      <div class="info">
-        <h1>Team of {{ teamList[0].area.name }}</h1>
-        <h4>Total : {{ count }} teams</h4>
+  <div class="team-list">
+    <Loader v-if="isLoading" />
+    <div v-else>
+      <button @click="back" class="prev-btn">Go back</button>
+      <div v-if="count">
+        <div class="info">
+          <h1>Team of {{ teamList[0].area.name }}</h1>
+          <h4>Total : {{ count }} teams</h4>
+        </div>
+        <div class="container">
+          <Card v-for="team in teamList" :key="team.id" :title="team.name" :link="{ name: 'Profile', params: { id: team.id }}" :alt="team.shortName" :img="team.crestUrl" />
+        </div>
       </div>
-      <div class="container">
-        <Card v-for="team in teamList" :key="team.id" :title="team.name" :link="{ name: 'Profile', params: { id: team.id }}" :alt="team.shortName" :img="team.crestUrl" />
-      </div>
+      <div v-else>No data team in this area</div>
     </div>
-    <div v-else>No data team in this area</div>
   </div>
 </template>
 
@@ -23,6 +26,11 @@ import Card from '@/components/Card.vue'
 export default {
   props: ['id'],
   components: { Loader, Card },
+  methods: {
+    back () {
+      this.$router.go(-1)
+    }
+  },
   setup (props) {
     const count = ref(null)
     const teamList = ref(null)
@@ -51,7 +59,8 @@ export default {
 
 <style>
 .team-list {
-  margin-bottom: 2rem;
+  max-width: 90%;
+  margin: 1rem auto;
 }
 
 .team-list .container {
