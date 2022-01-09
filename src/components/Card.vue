@@ -48,7 +48,6 @@ figure {
 
 .card-body {
   padding: 1rem;
-  margin-bottom: 1rem;
 }
 
 .card-title {
