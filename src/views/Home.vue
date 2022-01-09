@@ -6,6 +6,7 @@
       <div class="home-filter">
         <select @change="handleSelect" v-model="selectedArea" name="area">
           <option disabled value="">Select by Parent Area</option>
+          <option value="all">All</option>
           <option :value="2014">Asia</option>
           <option :value="2267">World</option>
           <option :value="2077">Europe</option>
@@ -60,16 +61,20 @@ export default {
   methods: {
     async handleSelect () {
       this.isLoading = true
-      try {
-        const { data } = await axios.get(`https://api.football-data.org/v2/areas/${this.selectedArea}`, {
-          headers: { 'X-Auth-Token': process.env.VUE_APP_API_TOKEN }
-        })
-        this.areas = data.childAreas
-        this.totalAreas = data.childAreas.length
-      } catch (err) {
-        console.log(err)
+      if (this.selectedArea === 'all') {
+        this.getAreas()
+      } else {
+        try {
+          const { data } = await axios.get(`https://api.football-data.org/v2/areas/${this.selectedArea}`, {
+            headers: { 'X-Auth-Token': process.env.VUE_APP_API_TOKEN }
+          })
+          this.areas = data.childAreas
+          this.totalAreas = data.childAreas.length
+        } catch (err) {
+          console.log(err)
+        }
+        this.isLoading = false
       }
-      this.isLoading = false
     },
     paginate (data) {
       this.areasDataToShow = data
@@ -96,7 +101,7 @@ export default {
 
     getAreas()
 
-    return { areas, totalAreas, isLoading, areasDataToShow }
+    return { areas, totalAreas, isLoading, areasDataToShow, getAreas }
   }
 }
 </script>
