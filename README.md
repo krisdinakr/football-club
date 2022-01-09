@@ -1,4 +1,12 @@
-# football-club
+# Football-Club  
+Football Club merupakan sebuah website sederhana yang memberikan informasi tentang club sepak bola. Informasi yang ditampilkan mulai dari cakupan area, informasi club di spesifik area, profile club, dan profile pemain. Data didapatkan dari [football-data.org](https://www.football-data.org)
+
+## Tech & Dependencies  
+- VueJS
+- Vue Router
+- Axios
+- HTML
+- CSS
 
 ## Project setup
 ```
@@ -15,10 +23,6 @@ yarn serve
 yarn build
 ```
 
-### Run your unit tests
-```
-yarn test:unit
-```
 
 ### Lints and fixes files
 ```
