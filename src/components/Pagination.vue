@@ -69,4 +69,9 @@ export default {
   border-top: 1.5px solid #cd5b3c;
   border-bottom: 1.5px solid #cd5b3c;
 }
+
+.pagination-btn .disabled,
+button[disabled] {
+  cursor: not-allowed;
+}
 </style>
