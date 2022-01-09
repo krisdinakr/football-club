@@ -98,4 +98,28 @@ export default {
   font-size: 1.25rem;
   letter-spacing: 0.5px;
 }
+
+@media screen and (max-width: 1023px) {
+  .player-header {
+    padding: 0.25rem;
+  }
+
+  .player-content p {
+    font-size: 1rem;
+  }
+
+  .player-content h1 {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .player-content p {
+    font-size: 1rem;
+  }
+
+  .player-content h1 {
+    font-size: 1.5rem;
+  }
+}
 </style>
