@@ -1,0 +1,28 @@
+0000000000000000000000000000000000000000 5db54cb469a0781810c9a38189bfe437eee9d46a Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641567013 +0700	commit (initial): init
+5db54cb469a0781810c9a38189bfe437eee9d46a a0604f1c66afdb6dd187ea631a19ce040e8f84b2 Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641651787 +0700	commit: delete unused files and install axios
+a0604f1c66afdb6dd187ea631a19ce040e8f84b2 32db825f2be424246cac179de6e9aedc8a93bb79 Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641651837 +0700	commit: create navbar component
+32db825f2be424246cac179de6e9aedc8a93bb79 457105fb63510da6450a2283013b1b25e63f990e Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641651903 +0700	commit (amend): create navbar component
+457105fb63510da6450a2283013b1b25e63f990e fe1e985ccfe0f3ba7c2232f2c26ef31a98a7454c Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641653099 +0700	commit: create table component
+fe1e985ccfe0f3ba7c2232f2c26ef31a98a7454c 5a557ab153a3b59873f0f383b3256b5692e4f878 Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641653283 +0700	commit: delete unused route
+5a557ab153a3b59873f0f383b3256b5692e4f878 7bf73c23b132a384aff6251cd9e026b7336889d4 Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641653354 +0700	commit: update App.vue and add some styles
+7bf73c23b132a384aff6251cd9e026b7336889d4 293d8d3a890b3b03d77c4d38fc2dced6cbcbb215 Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641653480 +0700	commit: update Home.vue and fetch area list data from API
+293d8d3a890b3b03d77c4d38fc2dced6cbcbb215 6b9604f98cce4a16bbf948c2fb6b2c4ab29881e4 Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641653652 +0700	commit: create Team List Page
+6b9604f98cce4a16bbf948c2fb6b2c4ab29881e4 53682bb0193f5bc7cba228b5a4529e833a8bdf07 Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641657004 +0700	commit: create loader component and add it to home page
+53682bb0193f5bc7cba228b5a4529e833a8bdf07 a3e159703dd5a488129846e377d8dbb2b7f3d8da Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641657646 +0700	commit: fix team list route and add loader to team list page
+a3e159703dd5a488129846e377d8dbb2b7f3d8da e3dc463fcf353b3de1fd71ecb105395d0599be1b Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641659799 +0700	commit: move card into its own component
+e3dc463fcf353b3de1fd71ecb105395d0599be1b 67007e411d718ca8851bd85b551bf3a59ea5d09e Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641660857 +0700	commit (amend): move card into its own component
+67007e411d718ca8851bd85b551bf3a59ea5d09e 1f39af0e1314993c97e24a93b00c53fe28e69614 Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641664586 +0700	commit (amend): move card into its own component
+1f39af0e1314993c97e24a93b00c53fe28e69614 1f5689086e2bfc3be05a9258ef9733a08fa35cfb Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641664655 +0700	commit: fix style on App.vue
+1f5689086e2bfc3be05a9258ef9733a08fa35cfb 7a82aa93187cfd8de97480fb10c7f748eddc3ac3 Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641664734 +0700	commit: WIP: player and profile page
+7a82aa93187cfd8de97480fb10c7f748eddc3ac3 0cf92cc501affde8bc2317e26bc5a43ae61de719 Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641686862 +0700	commit: add global style for backButton
+0cf92cc501affde8bc2317e26bc5a43ae61de719 ed530f74b3d50d76dff2259513d34ff5e168b681 Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641686913 +0700	commit: add backButton and fix structure and style on teamList page
+ed530f74b3d50d76dff2259513d34ff5e168b681 dc47c6faa089b28c7f4c6e23521d0b5ad413cb2c Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641686952 +0700	commit: add styling and back button
+dc47c6faa089b28c7f4c6e23521d0b5ad413cb2c 30aff75debd223f164782af0770840037018747e Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641687027 +0700	commit (amend): add styling and back button
+30aff75debd223f164782af0770840037018747e e547b6b4ee9137db64af673b3acb30a9d69d51bf Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641693458 +0700	commit: fx some style on table component and profile page
+e547b6b4ee9137db64af673b3acb30a9d69d51bf 3875072be0e2cdecfa8a61463298f4a29b97f291 Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641693534 +0700	commit: add select input to fetch data with specific id area on home page
+3875072be0e2cdecfa8a61463298f4a29b97f291 b2de7b303bc9c304800c6bd6a4a47a4ec2ec417d Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641696721 +0700	commit (amend): add select input to fetch data with specific id area on home page
+b2de7b303bc9c304800c6bd6a4a47a4ec2ec417d 366daba05f88e5c20e2b59381864c2261cf6271d Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641696773 +0700	commit: completed player page
+366daba05f88e5c20e2b59381864c2261cf6271d 22eb74fed83c3f51251bc4eb5f403ec9c74f40d3 Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641698959 +0700	commit: fix some styling
+22eb74fed83c3f51251bc4eb5f403ec9c74f40d3 22eb74fed83c3f51251bc4eb5f403ec9c74f40d3 Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641699317 +0700	reset: moving to HEAD
+22eb74fed83c3f51251bc4eb5f403ec9c74f40d3 03c763fa0e57612590f68011f28ac6e7ae938ea6 Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641699759 +0700	commit: fix api token
+03c763fa0e57612590f68011f28ac6e7ae938ea6 d6ac250facfbdd2218635d76cb216f72571e6b51 Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641699955 +0700	commit: forget to ignore env
