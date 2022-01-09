@@ -15,11 +15,7 @@
           <option :value="2220">South America</option>
         </select>
         <div>
-          <button @click="prevPage" :disabled="currentPage === 1" class="home-btn btn-prev">Prev Page</button>
-          <span class="home-pages">
-            {{ currentPage }} of {{ pageSize }}
-          </span>
-          <button @click="nextPage" :disabled="currentPage * dataPerPage + 1 > totalAreas" class="home-btn btn-next">Next Page</button>
+          <Pagination @filterData="paginate($event)" :data="areas" :totalRecords="totalAreas" :dataPerPage="15" />
         </div>
       </div>
       <Table v-if="areas" :data="areasDataToShow" :column="column" />
@@ -33,11 +29,11 @@ import { ref } from '@vue/reactivity'
 import axios from 'axios'
 import Table from '@/components/Table.vue'
 import Loader from '@/components/Loader.vue'
-import { onUpdated } from '@vue/runtime-core'
+import Pagination from '@/components/Pagination.vue'
 
 export default {
   name: 'Home',
-  components: { Table, Loader },
+  components: { Table, Loader, Pagination },
   data () {
     return {
       column: [
@@ -70,24 +66,13 @@ export default {
         })
         this.areas = data.childAreas
         this.totalAreas = data.childAreas.length
-        this.areasDataToShow = this.filterData(0, this.dataPerPage)
-        this.currentPage = 1
       } catch (err) {
         console.log(err)
       }
       this.isLoading = false
     },
-    nextPage () {
-      this.currentPage += 1
-      const start = (this.currentPage - 1) * this.dataPerPage
-      const updatedData = this.filterData(start, start + this.dataPerPage)
-      this.areasDataToShow = updatedData
-    },
-    prevPage () {
-      this.currentPage -= 1
-      const start = (this.currentPage - 1) * this.dataPerPage
-      const updatedData = this.filterData(start, start + this.dataPerPage)
-      this.areasDataToShow = updatedData
+    paginate (data) {
+      this.areasDataToShow = data
     }
   },
   setup () {
@@ -95,9 +80,6 @@ export default {
     const areas = ref(null)
     const totalAreas = ref(null)
     const areasDataToShow = ref(null)
-    const currentPage = ref(1)
-    const dataPerPage = ref(15)
-    const pageSize = ref(null)
 
     const getAreas = async () => {
       try {
@@ -106,7 +88,6 @@ export default {
         })
         areas.value = data.areas
         totalAreas.value = data.count
-        areasDataToShow.value = filterData(0, dataPerPage.value)
       } catch (err) {
         console.log(err)
       }
@@ -115,15 +96,7 @@ export default {
 
     getAreas()
 
-    const filterData = (start, end) => {
-      return areas.value.slice(start, end)
-    }
-
-    onUpdated(() => {
-      pageSize.value = Math.ceil(totalAreas.value / dataPerPage.value)
-    })
-
-    return { areas, totalAreas, isLoading, areasDataToShow, filterData, currentPage, dataPerPage, pageSize }
+    return { areas, totalAreas, isLoading, areasDataToShow }
   }
 }
 </script>
@@ -149,29 +122,6 @@ export default {
   margin-bottom: 1rem;
   display: flex;
   justify-content: space-between;
-}
-
-.home-btn,
-.home-pages {
-  padding: 0.25rem 0.5rem;
-  font-size: 0.8rem;
-  width: 5rem;
-}
-
-.home-btn {
-  background: transparent;
-  border: 1.5px solid #cd5b3c;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-}
-
-.home-btn:nth-child(1) {
-   border-radius: 5px 0 0 5px;
-}
-
-.home-pages {
-  border-top: 1.5px solid #cd5b3c;
-  border-bottom: 1.5px solid #cd5b3c;
 }
 
 @media screen and (max-width: 600px) {
