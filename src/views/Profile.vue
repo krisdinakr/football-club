@@ -57,7 +57,7 @@ export default {
     const getTeam = async () => {
       try {
         const { data } = await axios.get(`https://api.football-data.org/v2/teams/${props.id}`, {
-          headers: { 'X-Auth-Token': '1219b37dbeeb4f80ae814c6503484f76' }
+          headers: { 'X-Auth-Token': process.env.VUE_APP_API_TOKEN }
         })
         team.value = data
         if (data.squad && data.squad.length > 1) {

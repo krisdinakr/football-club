@@ -54,7 +54,7 @@ export default {
       this.isLoading = true
       try {
         const { data } = await axios.get(`https://api.football-data.org/v2/areas/${this.selectedArea}`, {
-          headers: { 'X-Auth-Token': '1219b37dbeeb4f80ae814c6503484f76' }
+          headers: { 'X-Auth-Token': process.env.VUE_APP_API_TOKEN }
         })
         this.areas = data.childAreas
       } catch (err) {
@@ -72,7 +72,7 @@ export default {
     const getAreas = async () => {
       try {
         const { data } = await axios.get('https://api.football-data.org/v2/areas', {
-          headers: { 'X-Auth-Token': '1219b37dbeeb4f80ae814c6503484f76' }
+          headers: { 'X-Auth-Token': process.env.VUE_APP_API_TOKEN }
         })
         areas.value = data.areas
         totalAreas.value = data.count
