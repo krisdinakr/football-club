@@ -22,8 +22,9 @@
         </div>
         <div class="profile-player">
           <h2>Players</h2>
+          <Pagination @filterData="paginate($event)" :data="players" :dataPerPage="6" :totalRecords="players.length" class="profile-pag" />
           <div v-if="players" class="player-wrapper">
-            <Card v-for="player in team.squad" :key="player.id" :title="player.name" :link="{ name: 'Player', params: { id: player.id }}" :subtitle="player.position" :text=true />
+            <Card v-for="player in playersToShow" :key="player.id" :title="player.name" :link="{ name: 'Player', params: { id: player.id }}" :subtitle="player.position" :text=true />
           </div>
           <div v-else>
             Data not available
@@ -40,13 +41,22 @@ import { ref } from '@vue/reactivity'
 import axios from 'axios'
 import Loader from '@/components/Loader.vue'
 import Card from '@/components/Card.vue'
+import Pagination from '@/components/Pagination.vue'
 
 export default {
   props: ['id'],
-  components: { Loader, Card },
+  components: { Loader, Card, Pagination },
+  data () {
+    return {
+      playersToShow: null
+    }
+  },
   methods: {
     back () {
       this.$router.go(-1)
+    },
+    paginate (data) {
+      this.playersToShow = data
     }
   },
   setup (props) {
@@ -135,12 +145,37 @@ export default {
   margin-top: 1rem;
   padding: 1rem;
   width: 100%;
-  height: 23rem;
-  overflow-y: scroll;
+  min-height: 23rem;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
+}
+
+.profile-pag button,
+.profile-pag span {
+  background: #e2d1bd;
+  border-color: none;
+  color: #022815;
+}
+
+@media screen and (max-width: 767px) {
+  .player-wrapper .text {
+    height: auto;
+  }
+
+  .player-wrapper .card {
+    width: 100%;
+    max-width: 12rem;
+  }
+
+  .player-wrapper .card-title {
+    font-size: 1rem;
+  }
+
+  .content-wrapper {
+    flex-direction: column;
+  }
 }
 
 </style>
