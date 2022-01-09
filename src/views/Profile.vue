@@ -7,7 +7,7 @@
       <div class="profile-content">
         <div class="content-wrapper">
           <img v-if="team.crestUrl" :src="team.crestUrl" alt="" class="profile-img">
-          <img v-else src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png" alt="No Image" class="profile-img">
+          <img v-else src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png" alt="No Image" class="profile-img filter">
           <div class="profile-info">
             <h1>{{ team.name }}</h1>
             <h5>Short Name: {{ team.shortName }}</h5>
@@ -114,6 +114,9 @@ export default {
 
 .profile-img {
   max-width: 20rem;
+}
+
+.profile-img .filter {
   filter: brightness(0.5);
 }
 

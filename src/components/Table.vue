@@ -33,6 +33,7 @@ export default {
   margin: 0 auto;
   border-collapse: collapse;
   box-shadow: rgba(0, 0, 0, 0.15) 0 0 20px;
+  overflow-x: auto;
 }
 
 #table thead th {
@@ -96,6 +97,13 @@ export default {
 
 .table-button:hover {
   background: #678478;
+}
+
+@media only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px) {
+  #table {
+    width: 100%;
+  }
 }
 
 </style>

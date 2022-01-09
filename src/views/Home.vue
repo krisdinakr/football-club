@@ -108,4 +108,21 @@ export default {
   font-size: 1rem;
   border-radius: 5px;
 }
+
+@media screen and (max-width: 600px) {
+  #app .container {
+    width: 100%;
+    margin: 0;
+  }
+
+  .home {
+    width: 100%;
+    margin: 0.5rem auto;
+    padding: 0;
+  }
+
+  .home main {
+    width: 100%;
+  }
+}
 </style>
