@@ -49,4 +49,21 @@ body {
 .info {
   padding: 0 1.25rem;
 }
+
+.prev-btn {
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 2px solid #cd5b3c;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 550;
+  color: #cd5b3c;
+}
+
+.prev-btn:hover {
+  background: #cd5b3c;
+  color: white;
+}
 </style>
