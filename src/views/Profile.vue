@@ -10,21 +10,31 @@
           <img v-else src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png" alt="No Image" class="profile-img filter">
           <div class="profile-info">
             <h1>{{ team.name }}</h1>
-            <h5>Short Name: {{ team.shortName }}</h5>
-            <h5>Founded: {{ team.founded }}</h5>
-            <h5>Club Colors: {{ team.clubColors }}</h5>
-            <h5>Address: {{ team.address }}</h5>
-            <h5>Phone: {{ team.phone }}</h5>
-            <h5>Email: {{ team.email }}</h5>
-            <h5>Venue: {{ team.venue }}</h5>
-            <h5>Website: {{ team.website }}</h5>
+            <h5 v-if="team.shortName">Short Name: {{ team.shortName }}</h5>
+            <h5 v-else>Short Name: -</h5>
+            <h5 v-if="team.founded">Founded: {{ team.founded }}</h5>
+            <h5 v-else>Founded: -</h5>
+            <h5 v-if="team.clubColors">Club Colors: {{ team.clubColors }}</h5>
+            <h5 v-else>Club Colors: -</h5>
+            <h5 v-if="team.address">Address: {{ team.address }}</h5>
+            <h5 v-else>Address: -</h5>
+            <h5 v-if="team.phone">Phone: {{ team.phone }}</h5>
+            <h5 v-else>Phone: -</h5>
+            <h5 v-if="team.email">Email: {{ team.email }}</h5>
+            <h5 v-else>Email: -</h5>
+            <h5 v-if="team.venue">Venue: {{ team.venue }}</h5>
+            <h5 v-else>Venue: -</h5>
+            <h5 v-if="team.website">Website: {{ team.website }}</h5>
+            <h5 v-else>Website: -</h5>
           </div>
         </div>
         <div class="profile-player">
           <h2>Players</h2>
-          <Pagination @filterData="paginate($event)" :data="players" :dataPerPage="6" :totalRecords="players.length" class="profile-pag" />
-          <div v-if="players" class="player-wrapper">
-            <Card v-for="player in playersToShow" :key="player.id" :title="player.name" :link="{ name: 'Player', params: { id: player.id }}" :subtitle="player.position" :text=true />
+          <div v-if="players">
+            <Pagination @filterData="paginate($event)" :data="players" :dataPerPage="6" :totalRecords="players.length" class="profile-pag" />
+            <div class="player-wrapper">
+              <Card v-for="player in playersToShow" :key="player.id" :title="player.name" :link="{ name: 'Player', params: { id: player.id }}" :subtitle="player.position" :text=true />
+            </div>
           </div>
           <div v-else>
             Data not available
@@ -70,7 +80,7 @@ export default {
           headers: { 'X-Auth-Token': process.env.VUE_APP_API_TOKEN }
         })
         team.value = data
-        if (data.squad && data.squad.length > 1) {
+        if (data.squad && data.squad.length > 0) {
           players.value = data.squad
         }
         console.log(data)
