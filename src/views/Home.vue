@@ -1,12 +1,24 @@
 <template>
-  <Loader v-if="isLoading" />
-  <main v-else class="home">
-    <h1>Browse Football Club by Areas</h1>
-    <div class="content">
+  <div class="home">
+    <Loader v-if="isLoading" />
+    <main v-else>
+      <div>
+        <h1>Browse Football Club by Areas</h1>
+        <select @change="handleSelect" v-model="selectedArea" name="area">
+          <option disabled value="">Select by Parent Area</option>
+          <option :value="2014">Asia</option>
+          <option :value="2267">World</option>
+          <option :value="2077">Europe</option>
+          <option :value="2001">Africa</option>
+          <option :value="2175">Oceania</option>
+          <option :value="2159">N/C America</option>
+          <option :value="2220">South America</option>
+        </select>
+      </div>
       <Table v-if="areas" :data="areas" :column="column" />
       <div v-else>No Data</div>
-    </div>
-  </main>
+    </main>
+  </div>
 </template>
 
 <script>
@@ -23,7 +35,7 @@ export default {
       column: [
         {
           key: 'name',
-          name: 'name'
+          name: 'area'
         },
         {
           key: 'countryCode',
@@ -31,9 +43,24 @@ export default {
         },
         {
           key: 'parentArea',
-          name: 'area'
+          name: 'parent area'
         }
-      ]
+      ],
+      selectedArea: ''
+    }
+  },
+  methods: {
+    async handleSelect () {
+      this.isLoading = true
+      try {
+        const { data } = await axios.get(`https://api.football-data.org/v2/areas/${this.selectedArea}`, {
+          headers: { 'X-Auth-Token': '1219b37dbeeb4f80ae814c6503484f76' }
+        })
+        this.areas = data.childAreas
+      } catch (err) {
+        console.log(err)
+      }
+      this.isLoading = false
     }
   },
   setup () {
@@ -44,15 +71,17 @@ export default {
 
     const getAreas = async () => {
       try {
-        const { data } = await axios.get('https://api.football-data.org/v2/areas?limit=10', {
+        const { data } = await axios.get('https://api.football-data.org/v2/areas', {
           headers: { 'X-Auth-Token': '1219b37dbeeb4f80ae814c6503484f76' }
         })
         areas.value = data.areas
         totalAreas.value = data.count
-        isLoading.value = false
+        const parentAreaArray = areas.value.filter(area => area.parentArea !== null).map(el => el.parentArea)
+        parentArea.value = Array.from(new Set(parentAreaArray))
       } catch (err) {
         console.log(err)
       }
+      isLoading.value = false
     }
 
     getAreas()
@@ -61,3 +90,22 @@ export default {
   }
 }
 </script>
+
+<style>
+.home {
+  max-width: 90%;
+  margin: 1rem auto;
+  padding: 0 1.25rem;
+}
+
+.home h1 {
+  margin-bottom: 1rem;
+}
+
+.home select {
+  padding: 0.25rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+</style>
