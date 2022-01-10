@@ -26,3 +26,18 @@ b2de7b303bc9c304800c6bd6a4a47a4ec2ec417d 366daba05f88e5c20e2b59381864c2261cf6271
 22eb74fed83c3f51251bc4eb5f403ec9c74f40d3 22eb74fed83c3f51251bc4eb5f403ec9c74f40d3 Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641699317 +0700	reset: moving to HEAD
 22eb74fed83c3f51251bc4eb5f403ec9c74f40d3 03c763fa0e57612590f68011f28ac6e7ae938ea6 Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641699759 +0700	commit: fix api token
 03c763fa0e57612590f68011f28ac6e7ae938ea6 d6ac250facfbdd2218635d76cb216f72571e6b51 Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641699955 +0700	commit: forget to ignore env
+d6ac250facfbdd2218635d76cb216f72571e6b51 33f0d936e3867ae9db3fa8c62644bdd1e0fb75d3 Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641700259 +0700	commit: add git dir
+33f0d936e3867ae9db3fa8c62644bdd1e0fb75d3 02b15f514f6796500e8f40f8684ee05f428f1e5b Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641701168 +0700	pull: Fast-forward
+02b15f514f6796500e8f40f8684ee05f428f1e5b f0fa07115187a18376cef00b53beb2ff74426e17 Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641710004 +0700	pull: Fast-forward
+f0fa07115187a18376cef00b53beb2ff74426e17 f0fa07115187a18376cef00b53beb2ff74426e17 Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641711207 +0700	reset: moving to HEAD
+f0fa07115187a18376cef00b53beb2ff74426e17 960e601b9382536578c989706ca4eaa29edb019e Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641725986 +0700	commit: add simple pagination to home page
+960e601b9382536578c989706ca4eaa29edb019e b7d9dc5ccb691321e1b51edb98b8981660ad595f Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641726012 +0700	commit: add responsive style for table
+b7d9dc5ccb691321e1b51edb98b8981660ad595f 6cf02e4259998d07f36f40f78e7b744544e706b2 Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641730962 +0700	commit: create pagination component
+6cf02e4259998d07f36f40f78e7b744544e706b2 2991cbbacfce240e22f2f85596b27535e9ef188a Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641731629 +0700	commit (amend): create pagination component
+2991cbbacfce240e22f2f85596b27535e9ef188a a6806c5b164bd24c02007f9c4ad2ceb09caa3239 Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641731719 +0700	commit: used pagination component on home page
+a6806c5b164bd24c02007f9c4ad2ceb09caa3239 9ccd76e589bbb8943a130e31ab1562154e4e7ec4 Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641733197 +0700	commit: add responsive style to team list page
+9ccd76e589bbb8943a130e31ab1562154e4e7ec4 555eac422db309b9c61ddc18c91e204405ecdab1 Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641735403 +0700	commit: add responsive style to profile page
+555eac422db309b9c61ddc18c91e204405ecdab1 4c12e0a46f66323dd71ff2a78164a3c94ba224e4 Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641735956 +0700	commit: add responsive style to player profile page
+4c12e0a46f66323dd71ff2a78164a3c94ba224e4 5620d5eb5943f6621cf4d3f664bc0a2c80ac26ff Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641768340 +0700	commit: add style to disable pagination button
+5620d5eb5943f6621cf4d3f664bc0a2c80ac26ff c4513ac9a07fbfed82df1b2f59394536ba4b985c Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641768748 +0700	commit: add conditional rendering to show profile info and fix conditional rendering for players card
+c4513ac9a07fbfed82df1b2f59394536ba4b985c 9010c76db3a9858171ec0f50e93ba0f991ee3362 Krisdina <77259488+krisdinakr@users.noreply.github.com> 1641768808 +0700	commit: add All option to selected area for fetch all data areas
